@@ -27,5 +27,15 @@ public class BookService {
     }
 
 
+    // Updates the book by checking if it exists and changing it.
+    public void updateBook(Long id, String title, String author, Double price) {
+        Book book = getBookById(id);
+        if (book == null) return;
+        book.title = title;
+        book.author = author;
+        book.price = price;
+        saveBook(book);
 
+
+    }
 }

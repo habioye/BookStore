@@ -14,6 +14,9 @@ public class BookController {
     @Autowired
     private BookService bookService;
 
+    // Below operations implements CRUD operations for the database
+
+    // Retrieves all books
     @GetMapping
     public List<Book> getAllBook(@PathVariable Long id) {
         return bookService.getAllBooks();
@@ -24,6 +27,7 @@ public class BookController {
         return bookService.getBookById(id);
     }
 
+    @PostMapping("/create")
     public Book createBook(@RequestBody Book book) {
         return bookService.saveBook(book);
     }
@@ -33,6 +37,10 @@ public class BookController {
         bookService.deleteBook(id);
     }
 
+    @PostMapping("/update/{id}")
+    public void updateBook(@PathVariable Long id, String title, String author, Double price) {
+        bookService.updateBook(id, title, author, price);
+    }
 
 
 }
